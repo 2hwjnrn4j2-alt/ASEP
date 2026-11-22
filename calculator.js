@@ -6,7 +6,6 @@ export function validateParameters(parameters) {
     maxGrade,
     passingGrade,
     passingPercent,
-    penalty,
     pointStep,
   } = parameters;
 
