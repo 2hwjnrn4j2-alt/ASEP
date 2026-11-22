@@ -29,9 +29,6 @@ export function validateParameters(parameters) {
   if (passingPercent !== null && (!Number.isFinite(passingPercent) || passingPercent <= 0 || passingPercent >= 100)) {
     errors.push("Le seuil de réussite doit être compris entre 0 % et 100 %.");
   }
-  if (!Number.isFinite(penalty) || penalty < 0 || penalty > totalPoints) {
-    errors.push("La pénalité doit être comprise entre 0 et le total de points.");
-  }
   if (pointStep != null && (!Number.isFinite(pointStep) || pointStep <= 0 || pointStep > totalPoints)) {
     errors.push("Le pas de points doit être supérieur à 0 et ne pas dépasser le total.");
   }
@@ -49,10 +46,9 @@ export function calculateGrade({
   maxGrade,
   passingGrade,
   passingPercent,
-  penalty = 0,
   rounding = 0.5,
 }) {
-  const parameters = { totalPoints, minGrade, maxGrade, passingGrade, passingPercent, penalty };
+  const parameters = { totalPoints, minGrade, maxGrade, passingGrade, passingPercent};
   const errors = validateParameters(parameters);
   if (errors.length) throw new RangeError(errors.join(" "));
   if (!Number.isFinite(score)) throw new RangeError("Le nombre de points obtenus doit être valide.");
