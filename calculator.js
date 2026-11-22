@@ -55,7 +55,7 @@ export function calculateGrade({
     throw new RangeError("La règle d’arrondi sélectionnée n’est pas valide.");
   }
 
-  const effectiveScore = Math.min(totalPoints, Math.max(0, score - penalty));
+const effectiveScore = Math.min(totalPoints, Math.max(0, score));
   const percentage = (effectiveScore / totalPoints) * 100;
   const threshold = resolvePassingPercent({ minGrade, maxGrade, passingGrade, passingPercent });
   const rawGrade = percentage <= threshold
