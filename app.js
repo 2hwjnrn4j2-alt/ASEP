@@ -19,7 +19,6 @@ function readParameters() {
     maxGrade: Number(formData.get("maxGrade")),
     passingGrade: Number(formData.get("passingGrade")),
     passingPercent: optionalNumber("passingPercent"),
-    penalty: Number(formData.get("penalty")),
     pointStep: optionalNumber("pointStep"),
     rounding: roundingValue === "none" ? null : Number(roundingValue),
   };
