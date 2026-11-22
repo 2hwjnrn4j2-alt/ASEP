@@ -19,7 +19,7 @@
 
     <main>
       <section class="intro">
-        <p class="eyebrow">ÉVALUATION · ÉCOLE PRIMAIRE</p>
+        <p class="eyebrow">ÉVALUATION</p>
         <h1>Un barème clair,<br>en quelques secondes.</h1>
         <p class="intro-copy">Définissez votre échelle de notes et obtenez aussitôt les notes correspondant aux points de l’évaluation.</p>
       </section>
@@ -56,15 +56,6 @@
               <span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto · 60"><span>%</span></span>
             </label>
           </div>
-
-          <details class="advanced-settings">
-            <summary><span class="settings-icon" aria-hidden="true">＋</span> Pénalité et affichage</summary>
-            <div class="field-grid advanced-grid">
-              <label class="field" for="penalty">
-                <span>Pénalité <span class="optional">optionnel</span></span>
-                <span class="input-wrap"><input id="penalty" name="penalty" type="number" min="0" step="any" value="0"><span>points</span></span>
-                <small class="field-help">Points retirés aux points obtenus avant le calcul de la note.</small>
-              </label>
               <label class="field" for="rounding">
                 <span>Arrondir la note</span>
                 <select id="rounding" name="rounding">
@@ -74,12 +65,17 @@
                   <option value="1">À l’entier le plus proche</option>
                   <option value="none">Sans arrondi</option>
                 </select>
-              </label>
               <label class="field field-wide" for="point-step">
-                <span>Pas entre les lignes <span class="optional">vide = automatique</span></span>
-                <span class="input-wrap"><input id="point-step" name="pointStep" type="number" min="0.01" step="any" placeholder="Automatique"><span>points</span></span>
-                <small class="field-help">Écart entre les points affichés dans le tableau. En automatique, le pas s’adapte au total; le total reste toujours affiché.</small>
-              </label>
+  <span>Intervalle des points</span>
+  <select id="point-step" name="pointStep">
+    <option value="0.25">0,25 point</option>
+    <option value="0.5" selected>0,5 point</option>
+    <option value="1">1 point entier</option>
+  </select>
+  <small class="field-help">
+    Écart entre les points affichés dans le tableau. Le total reste toujours affiché.
+  </small>
+</label>
             </div>
           </details>
 
@@ -109,7 +105,7 @@
             <tbody id="results-body"></tbody>
           </table>
         </div>
-        <p class="table-note">Les points sont indiqués avant déduction de la pénalité éventuelle. Utilisez « Imprimer / PDF » pour imprimer ou enregistrer votre barème.</p>
+        <p class="table-note">Utilisez « Imprimer / PDF » pour imprimer ou enregistrer votre barème.</p>
       </section>
 
       <section class="about-section">
