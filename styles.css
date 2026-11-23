@@ -120,6 +120,8 @@ h2 { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -.025em; }
 .optional { color: #89978f; font-size: 10px; font-weight: 450; }
 .field input, .field select {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   height: 42px;
   border: 1px solid #dce5df;
   border-radius: 7px;
@@ -196,6 +198,24 @@ footer { display: flex; width: min(1110px, calc(100% - 48px)); margin: 29px auto
   .result-actions { gap: 8px; }
   .row-count { display: none; }
   footer { width: calc(100% - 32px); gap: 12px; font-size: 9px; }
+
+  .evaluation-details .field-grid,
+  .evaluation-details .field-grid > .field {
+    min-width: 0;
+  }
+  .evaluation-details input[type="date"] {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .evaluation-details .field:not(.field-wide) {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 390px) {
