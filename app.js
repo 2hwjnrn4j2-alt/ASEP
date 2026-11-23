@@ -183,8 +183,9 @@ function setExportFilename() {
   const title = document.querySelector("#evaluation-title").value
     .replace(/[\\/:*?\"<>|]/g, "")
     .replace(/\s+/g, " ")
-    .trim() || "Barème";
-  document.title = `${datePart}_${title}`;
+    .trim();
+  const filename = title ? `${datePart}_Barème_${title}` : `${datePart}_Barème`;
+  document.title = filename;
 }
 
 printButton.addEventListener("click", () => {
