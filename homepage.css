@@ -7,7 +7,7 @@ body { background: var(--canvas); }
   padding: clamp(30px, 6vw, 58px); border: 1px solid #f1d4df; border-radius: 16px;
   background: linear-gradient(120deg, #f8dce6 0%, #fbe8ee 68%, #fff0f4 100%); color: #49313a;
 }
-.home-banner::after { position: absolute; top: -110px; right: -40px; width: 300px; height: 300px; border: 1px solid rgba(185, 79, 115, .16); border-radius: 50%; box-shadow: 0 0 0 34px rgba(185, 79, 115, .045), 0 0 0 70px rgba(185, 79, 115, .035); content: ""; }
+.home-banner::after { position: absolute; top: -110px; right: -40px; width: 300px; height: 300px; border: 1px solid rgba(185, 79, 115, .16); border-radius: 50%; box-shadow: 0 0 0 34px rgba(185, 79, 115, .04), 0 0 0 68px rgba(185, 79, 115, .03); content: ""; }
 .home-kicker { position: relative; z-index: 1; margin: 0 0 12px; color: #a94367; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
 .home-banner h1 { position: relative; z-index: 1; font-family: Georgia, "Times New Roman", serif; font-size: clamp(36px, 6vw, 58px); font-weight: 500; letter-spacing: -.045em; }
 .home-banner h1 span { color: #a94367; }
@@ -22,13 +22,13 @@ body { background: var(--canvas); }
 .search-wrap > span { font-size: 22px; line-height: 1; }
 .search-wrap input { width: 100%; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 12px; }
 .search-wrap input::placeholder { color: #a5989d; }
-.nav-feature-button { display: inline-flex; min-height: 40px; flex: 0 0 auto; align-items: center; gap: 8px; padding: 0 13px; border: 1px solid #23755a; border-radius: 7px; background: #23755a; color: #fff; cursor: pointer; font: inherit; font-size: 12px; font-weight: 650; }
+.nav-feature-button { display: inline-flex; min-height: 40px; flex: 0 0 auto; align-items: center; gap: 8px; padding: 0 13px; border: 1px solid #23755a; border-radius: 7px; background: #23755a; color: #fff; cursor: pointer; }
 .nav-feature-button:hover { border-color: #175c45; background: #175c45; }
 .nav-feature-button:focus-visible { outline: 3px solid rgba(35, 117, 90, .28); outline-offset: 2px; }
 .header-note { justify-self: end; align-self: center; }
 
 .feature-navigation { max-width: 720px; margin: 27px auto 0; }
-.feature-link { display: flex; width: 100%; min-width: 0; min-height: 82px; align-items: center; gap: 13px; padding: 15px 17px; border: 1px solid #23755a; border-radius: 11px; background: #23755a; color: #fff; text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 4px 16px rgba(27, 58, 45, .08); transition: border-color .15s, transform .15s, box-shadow .15s; }
+.feature-link { display: flex; width: 100%; min-width: 0; min-height: 82px; align-items: center; gap: 13px; padding: 15px 17px; border: 1px solid #23755a; border-radius: 11px; background: #23755a; color: #fff; text-align: left; cursor: pointer; }
 .feature-link:hover { transform: translateY(-2px); border-color: #175c45; background: #175c45; box-shadow: 0 8px 20px rgba(27, 58, 45, .14); }
 .feature-link:focus-visible { outline: 3px solid rgba(35, 117, 90, .28); outline-offset: 3px; }
 .feature-icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border-radius: 9px; background: rgba(255,255,255,.16); color: #fff; font-size: 19px; }
@@ -39,18 +39,16 @@ body { background: var(--canvas); }
 .search-empty { margin: 13px 0; color: var(--muted); font-size: 13px; }
 [hidden] { display: none !important; }
 #calculator-view { padding-top: 20px; }
-.back-home { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid #dce5df; border-radius: 7px; background: #fff; color: #175c45; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; }
+.back-home { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid #dce5df; border-radius: 7px; background: #fff; color: #175c45; cursor: pointer; }
 .back-home:hover { background: #e8f4ee; }
 #grading-form, #about-calculation { scroll-margin-top: 90px; }
 
-/* La page barème conserve sa palette verte d’origine. */
+/* Le contenu du barème garde sa palette verte, tandis que l’en-tête reste rose. */
 body.calculator-active { --canvas: #f4f7f5; --green: #23755a; --green-dark: #175c45; --green-pale: #e8f4ee; --line: #e2eae5; background: var(--canvas); }
-body.calculator-active .brand-mark { background: var(--green); }
-body.calculator-active .site-header { background: rgba(255,255,255,.94); }
-body.calculator-active .search-wrap { border-color: #dce5df; color: var(--green); }
-body.calculator-active .search-wrap:focus-within { border-color: #69a58a; box-shadow: 0 0 0 3px rgba(35,117,90,.1); }
-body.calculator-active .nav-feature-button { border-color: var(--green); background: var(--green); }
-body.calculator-active .nav-feature-button:hover { border-color: var(--green-dark); background: var(--green-dark); }
+body.calculator-active .brand-mark { background: #b94f73; }
+body.calculator-active .site-header { background: rgba(255, 245, 247, .96); }
+body.calculator-active .search-wrap { border-color: #e8cbd6; color: #a94367; }
+body.calculator-active .search-wrap:focus-within { border-color: #c56b89; box-shadow: 0 0 0 3px rgba(185,79,115,.12); }
 body.calculator-active .intro { padding-top: 30px; }
 
 @media (max-width: 760px) {
