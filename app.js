@@ -43,6 +43,7 @@ function createEvaluationDetails() {
     .evaluation-details { margin-bottom: 25px; padding-bottom: 22px; border-bottom: 1px solid #edf1ee; }
     .evaluation-details-heading { margin-bottom: 17px; }
     .evaluation-details-heading .eyebrow { margin-bottom: 7px; }
+    .evaluation-details input[type="date"] { width: 100%; min-width: 0; max-width: 100%; }
     .print-evaluation-heading { display: none; }
     @media print {
       .print-evaluation-heading { display: block; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #aaa; }
