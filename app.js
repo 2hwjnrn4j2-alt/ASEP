@@ -52,6 +52,9 @@ function createEvaluationDetails() {
     }
     @media (max-width: 760px) {
       .evaluation-details { margin-bottom: 22px; padding-bottom: 19px; }
+    }
+    @media (max-width: 480px) {
+      .evaluation-details .field:not(.field-wide) { grid-column: 1 / -1; }
     }`;
   document.head.append(style);
 
@@ -181,7 +184,7 @@ function setExportFilename() {
   const date = dateValue ? new Date(`${dateValue}T00:00:00`) : new Date();
   const datePart = `${String(date.getDate()).padStart(2, "0")}${String(date.getMonth() + 1).padStart(2, "0")}${date.getFullYear()}`;
   const title = document.querySelector("#evaluation-title").value
-    .replace(/[\\/:*?\"<>|]/g, "")
+    .replace(/[\\/:*?"<>|]/g, "")
     .replace(/\s+/g, " ")
     .trim();
   const filename = title ? `${datePart}_Barème_${title}` : `${datePart}_Barème`;
