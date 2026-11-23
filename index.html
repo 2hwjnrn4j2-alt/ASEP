@@ -36,7 +36,7 @@
           <div class="field-grid">
             <label class="field field-wide" for="total-points">
               <span>Total de points</span>
-              <span class="input-wrap"><input id="total-points" name="totalPoints" type="number" min="0.01" step="any" value="40" required><span>points</span></span>
+              <span class="input-wrap"><input id="total-points" name="totalPoints" type="number" min="0.01" step="any" value="20" required><span>points</span></span>
             </label>
             <label class="field" for="min-grade">
               <span>Note minimale</span>
@@ -50,22 +50,22 @@
               <span>Note de réussite</span>
               <input id="passing-grade" name="passingGrade" type="number" step="any" value="4" required>
             </label>
-            <label class="field" for="passing-percent">
-              <span>Seuil de réussite <span class="optional">optionnel</span></span>
-              <span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto · 60"><span>%</span></span>
-            </label>
           </div>
 
           <details class="advanced-settings">
             <summary><span class="settings-icon" aria-hidden="true">+</span>Paramètres avancés</summary>
             <div class="advanced-grid field-grid">
+              <label class="field" for="passing-percent">
+                <span>Seuil de réussite <span class="optional">optionnel</span></span>
+                <span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto · 60"><span>%</span></span>
+              </label>
               <label class="field" for="rounding">
                 <span>Arrondir la note</span>
                 <select id="rounding" name="rounding">
+                  <option value="1">À l’entier le plus proche</option>
                   <option value="0.5" selected>Au 0,5 le plus proche</option>
                   <option value="0.25">Au 0,25 le plus proche</option>
                   <option value="0.1">Au 0,1 le plus proche</option>
-                  <option value="1">À l’entier le plus proche</option>
                   <option value="none">Sans arrondi</option>
                 </select>
               </label>
@@ -73,8 +73,8 @@
                 <span>Intervalle des points</span>
                 <select id="point-step" name="pointStep">
                   <option value="0.25">0,25 point</option>
-                  <option value="0.5" selected>0,5 point</option>
-                  <option value="1">1 point entier</option>
+                  <option value="0.5">0,5 point</option>
+                  <option value="1" selected>1 point</option>
                 </select>
                 <small class="field-help">Écart entre les points affichés dans le tableau. Le total reste toujours affiché.</small>
               </label>
@@ -123,6 +123,6 @@
         </details>
       </section>
     </main>
-    <footer><span>ASEP v0.1.3 (bêta)</span><span>Les calculs sont effectués dans votre navigateur.</span></footer>
+    <footer><span>ASEP v0.2.0 (bêta)</span><span>Les calculs sont effectués dans votre navigateur.</span></footer>
   </body>
 </html>
