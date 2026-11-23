@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f4f7f5">
-    <title>Générateur de barèmes</title>
+    <meta name="description" content="ASEP, des outils simples pour accompagner les enseignantes et enseignants du primaire.">
+    <title>ASEP — Espace enseignant</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./homepage.css">
     <script type="module" src="./app.js"></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./" aria-label="Accueil du générateur de barèmes">
+      <a class="brand" href="./" aria-label="Accueil ASEP">
         <span class="brand-mark" aria-hidden="true">É</span>
         <span>ASEP</span>
       </a>
@@ -18,9 +20,28 @@
     </header>
 
     <main>
-      <section class="intro">
-        <p class="eyebrow">Barème</p>
-        <h1>Un barème clair,<br>en quelques secondes.</h1>
+      <section class="home-banner" aria-labelledby="home-title">
+        <p class="home-kicker">VOTRE ESPACE ENSEIGNANT</p>
+        <h1 id="home-title">Bienvenue chez <span>ASEP</span></h1>
+        <p>Des outils pratiques pour accompagner votre quotidien en classe.</p>
+      </section>
+
+      <nav class="feature-menu" aria-label="Choisir une fonctionnalité">
+        <a class="feature-link feature-link-primary" href="#grading-form">
+          <span class="feature-icon" aria-hidden="true">✎</span>
+          <span><strong>Créer un barème</strong><small>Générer les notes de votre évaluation</small></span>
+          <span class="feature-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="feature-link" href="#about-calculation">
+          <span class="feature-icon feature-icon-light" aria-hidden="true">?</span>
+          <span><strong>Comprendre le calcul</strong><small>Découvrir comment les notes sont établies</small></span>
+          <span class="feature-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
+      <section class="intro" aria-labelledby="grading-title">
+        <p class="eyebrow">BARÈME DE NOTES</p>
+        <h2 id="grading-title">Un barème clair,<br>en quelques secondes.</h2>
         <p class="intro-copy">Définissez votre échelle de notes et obtenez aussitôt les notes correspondant aux points de l’évaluation.</p>
       </section>
 
@@ -109,11 +130,11 @@
         <p class="table-note">Utilisez « Imprimer / PDF » pour imprimer ou enregistrer votre barème.</p>
       </section>
 
-      <section class="about-section">
+      <section id="about-calculation" class="about-section">
         <details>
           <summary>À propos du calcul</summary>
           <div class="about-content">
-            <p>Le calcul relie la note minimale à 0 %, la note de réussite au seuil choisi et la note maximale à 100 %, par interpolation linéaire. Sans seuil indiqué, il est déduit des notes saisies.</p>
+            <p>Le calcul relie la note minimale à 0 %, la note de réussite au seuil choisi et la note maximale à 100 %, par interpolation linéaire. Sans seuil indiqué, celui-ci est déduit des notes et du total de points.</p>
             <div class="formula-example">
               <span>Exemple courant</span>
               <strong>1 + 5 × (points ÷ total)</strong>
