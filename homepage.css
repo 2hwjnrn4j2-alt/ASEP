@@ -1,90 +1,47 @@
 /* Accueil ASEP */
+:root { --canvas: #fff5f7; --green: #b94f73; --green-dark: #963b5d; --green-pale: #fce8ef; --line: #f0dce3; }
+
+body { background: var(--canvas); }
+.brand-mark { background: #b94f73; }
 .home-banner {
-  position: relative;
-  overflow: hidden;
-  margin-top: 32px;
-  padding: clamp(30px, 6vw, 58px);
-  border-radius: 16px;
-  background: linear-gradient(120deg, #175c45 0%, #23755a 68%, #39856a 100%);
-  color: #fff;
+  position: relative; overflow: hidden; margin-top: 32px;
+  padding: clamp(30px, 6vw, 58px); border: 1px solid #f1d4df; border-radius: 16px;
+  background: linear-gradient(120deg, #f8dce6 0%, #fbe8ee 68%, #fff0f4 100%); color: #49313a;
 }
-
 .home-banner::after {
-  position: absolute;
-  top: -110px;
-  right: -40px;
-  width: 300px;
-  height: 300px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px rgba(255, 255, 255, .045), 0 0 0 70px rgba(255, 255, 255, .035);
-  content: "";
+  position: absolute; top: -110px; right: -40px; width: 300px; height: 300px;
+  border: 1px solid rgba(185, 79, 115, .16); border-radius: 50%;
+  box-shadow: 0 0 0 34px rgba(185, 79, 115, .045), 0 0 0 70px rgba(185, 79, 115, .035); content: "";
 }
-
-.home-kicker {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 12px;
-  color: #cce5d8;
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: .14em;
-}
-
-.home-banner h1 {
-  position: relative;
-  z-index: 1;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(36px, 6vw, 58px);
-  font-weight: 500;
-  letter-spacing: -.045em;
-}
-
-.home-banner h1 span { color: #d7eddf; }
-.home-banner > p:last-child { position: relative; z-index: 1; margin: 15px 0 0; color: #e0eee6; font-size: 14px; line-height: 1.6; }
-
-.feature-menu {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.feature-link {
-  display: flex;
-  min-width: 0;
-  min-height: 82px;
-  align-items: center;
-  gap: 13px;
-  padding: 15px 17px;
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  background: #fff;
-  color: var(--ink);
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(27, 58, 45, .025);
-  transition: border-color .15s, transform .15s, box-shadow .15s;
-}
-
-.feature-link:hover { transform: translateY(-2px); border-color: #b7d2c2; box-shadow: 0 8px 20px rgba(27, 58, 45, .07); }
-.feature-link:focus-visible { outline: 3px solid rgba(35, 117, 90, .28); outline-offset: 3px; }
-.feature-link-primary { border-color: #c7dfd1; background: #f7fbf8; }
-.feature-icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border-radius: 9px; background: var(--green); color: #fff; font-size: 19px; }
-.feature-icon-light { background: var(--green-pale); color: var(--green); font-weight: 700; }
+.home-kicker { position: relative; z-index: 1; margin: 0 0 12px; color: #a94367; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
+.home-banner h1 { position: relative; z-index: 1; font-family: Georgia, "Times New Roman", serif; font-size: clamp(36px, 6vw, 58px); font-weight: 500; letter-spacing: -.045em; }
+.home-banner h1 span { color: #a94367; }
+.home-banner > p:last-child { position: relative; z-index: 1; margin: 15px 0 0; color: #72505d; font-size: 14px; line-height: 1.6; }
+.feature-navigation { max-width: 720px; margin: 27px auto 0; }
+.search-label { display: block; margin-bottom: 8px; color: #43564e; font-size: 12px; font-weight: 650; }
+.search-wrap { display: flex; height: 46px; align-items: center; gap: 10px; padding: 0 13px; border: 1px solid #e8cbd6; border-radius: 8px; background: #fff; color: #a94367; }
+.search-wrap:focus-within { border-color: #c56b89; box-shadow: 0 0 0 3px rgba(185, 79, 115, .12); }
+.search-wrap > span { font-size: 23px; line-height: 1; }
+.search-wrap input { width: 100%; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 13px; }
+.search-wrap input::placeholder { color: #a5989d; }
+.feature-menu { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 13px; }
+.feature-link { display: flex; width: 100%; min-width: 0; min-height: 82px; align-items: center; gap: 13px; padding: 15px 17px; border: 1px solid #efd5df; border-radius: 11px; background: #fff; color: var(--ink); text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 4px 16px rgba(90, 45, 62, .035); transition: border-color .15s, transform .15s, box-shadow .15s; }
+.feature-link:hover { transform: translateY(-2px); border-color: #d99aaf; box-shadow: 0 8px 20px rgba(90, 45, 62, .08); }
+.feature-link:focus-visible { outline: 3px solid rgba(185, 79, 115, .28); outline-offset: 3px; }
+.feature-link-primary { background: #fffafb; }
+.feature-icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border-radius: 9px; background: #b94f73; color: #fff; font-size: 19px; }
 .feature-link > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
 .feature-link strong { font-size: 13px; font-weight: 700; }
 .feature-link small { color: var(--muted); font-size: 11px; line-height: 1.4; }
-.feature-arrow { margin-left: auto; color: var(--green); font-size: 19px; }
-
-.intro { padding-top: 43px; }
-.intro h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 4vw, 42px); font-weight: 500; letter-spacing: -.035em; line-height: 1.08; }
-.intro .eyebrow { margin-bottom: 10px; }
-
+.feature-arrow { margin-left: auto; color: #a94367; font-size: 19px; }
+.search-empty { margin: 13px 0; color: var(--muted); font-size: 13px; }
+[hidden] { display: none !important; }
+#calculator-view { padding-top: 20px; }
+.back-home { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid #e8cbd6; border-radius: 7px; background: #fff; color: #923d5d; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; }
+.back-home:hover { background: #fff0f4; }
 #grading-form, #about-calculation { scroll-margin-top: 24px; }
 
 @media (max-width: 650px) {
   .home-banner { margin-top: 20px; }
-  .feature-menu { grid-template-columns: 1fr; gap: 10px; }
   .feature-link { min-height: 74px; }
-  .intro { padding-top: 35px; }
 }
