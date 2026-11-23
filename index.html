@@ -17,6 +17,14 @@
         <span class="brand-mark" aria-hidden="true">É</span>
         <span>ASEP</span>
       </a>
+      <nav class="global-navigation" aria-label="Navigation principale">
+        <label class="visually-hidden" for="feature-search">Rechercher une fonctionnalité</label>
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input id="feature-search" type="search" placeholder="Rechercher une fonctionnalité…" autocomplete="off">
+        </div>
+        <button class="nav-feature-button" id="open-grading-nav" type="button" data-search="barème notes évaluation points créer">Barème <span aria-hidden="true">→</span></button>
+      </nav>
       <span class="header-note">Pour les enseignantes et enseignants</span>
     </header>
 
@@ -27,20 +35,12 @@
           <h1 id="home-title">Bienvenue chez <span>ASEP</span></h1>
           <p>Des outils pratiques pour accompagner votre quotidien en classe.</p>
         </section>
-
-        <section class="feature-navigation" aria-label="Navigation des fonctionnalités">
-          <label class="search-label" for="feature-search">Rechercher une fonctionnalité</label>
-          <div class="search-wrap">
-            <span aria-hidden="true">⌕</span>
-            <input id="feature-search" type="search" placeholder="Ex. barème, notes…" autocomplete="off">
-          </div>
-          <nav class="feature-menu" aria-label="Fonctionnalités">
-            <button class="feature-link feature-link-primary" id="open-grading" type="button" data-search="barème notes évaluation points créer">
-              <span class="feature-icon" aria-hidden="true">✎</span>
-              <span><strong>Créer un barème</strong><small>Générer les notes de votre évaluation</small></span>
-              <span class="feature-arrow" aria-hidden="true">→</span>
-            </button>
-          </nav>
+        <section class="feature-navigation" aria-label="Fonctionnalités">
+          <button class="feature-link feature-link-primary" id="open-grading" type="button" data-search="barème notes évaluation points créer">
+            <span class="feature-icon" aria-hidden="true">✎</span>
+            <span><strong>Créer un barème</strong><small>Générer les notes de votre évaluation</small></span>
+            <span class="feature-arrow" aria-hidden="true">→</span>
+          </button>
           <p id="search-empty" class="search-empty" role="status" hidden>Aucune fonctionnalité trouvée.</p>
         </section>
       </div>
@@ -55,9 +55,7 @@
 
         <div class="workspace">
           <form id="grading-form" class="settings-card" novalidate>
-            <div class="card-heading">
-              <div><p class="eyebrow">VOTRE ÉVALUATION</p><h2>Paramètres du barème</h2></div>
-            </div>
+            <div class="card-heading"><div><p class="eyebrow">VOTRE ÉVALUATION</p><h2>Paramètres du barème</h2></div></div>
             <div class="field-grid">
               <label class="field field-wide" for="total-points"><span>Total de points</span><span class="input-wrap"><input id="total-points" name="totalPoints" type="number" min="0.01" step="any" value="20" required><span>points</span></span></label>
               <label class="field" for="min-grade"><span>Note minimale</span><input id="min-grade" name="minGrade" type="number" step="any" value="1" required></label>
@@ -85,7 +83,6 @@
           <div class="table-wrap"><table><thead><tr><th scope="col">Points obtenus</th><th scope="col">Note</th></tr></thead><tbody id="results-body"></tbody></table></div>
           <p class="table-note">Utilisez « Imprimer / PDF » pour imprimer ou enregistrer votre barème.</p>
         </section>
-
         <section id="about-calculation" class="about-section">
           <details><summary>À propos du calcul</summary><div class="about-content">
             <p>Le calcul relie la note minimale à 0 %, la note de réussite au seuil choisi et la note maximale à 100 %, par interpolation linéaire. Sans seuil indiqué, il est déduit des notes et du total de points.</p>
