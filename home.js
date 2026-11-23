@@ -2,8 +2,14 @@ const homeView = document.querySelector("#home-view");
 const calculatorView = document.querySelector("#calculator-view");
 const searchInput = document.querySelector("#feature-search");
 const homeFeatureButton = document.querySelector("#open-grading");
-const navFeatureButton = document.querySelector("#open-grading-nav");
 const emptyMessage = document.querySelector("#search-empty");
+
+// Garder uniquement le placeholder dans la barre de recherche.
+document.querySelector('.global-navigation label[for="feature-search"]')?.remove();
+searchInput.placeholder = "Rechercher";
+
+// La fonctionnalité Barème reste accessible depuis la carte située sous la barre.
+document.querySelector("#open-grading-nav")?.remove();
 
 function openCalculator() {
   homeView.hidden = true;
@@ -22,7 +28,6 @@ function returnHome() {
 }
 
 homeFeatureButton.addEventListener("click", openCalculator);
-navFeatureButton.addEventListener("click", openCalculator);
 document.querySelector("#back-home").addEventListener("click", returnHome);
 document.querySelector("#brand-home").addEventListener("click", (event) => {
   if (!calculatorView.hidden) {
@@ -35,6 +40,5 @@ searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLocaleLowerCase("fr");
   const matches = homeFeatureButton.dataset.search.toLocaleLowerCase("fr").includes(query);
   homeFeatureButton.hidden = !matches;
-  navFeatureButton.hidden = !matches;
   emptyMessage.hidden = matches || !query || calculatorView.hidden;
 });
