@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f4f7f5">
     <title>Générateur de barèmes</title>
-   <link rel="stylesheet" href="./styles.css">
-<script type="module" src="./app.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="./" aria-label="Accueil du générateur de barèmes">
         <span class="brand-mark" aria-hidden="true">É</span>
-        <span>ASEP BÊTA
+        <span>ASEP</span>
       </a>
       <span class="header-note">Pour les enseignantes et enseignants</span>
     </header>
@@ -30,6 +30,7 @@
             <div>
               <p class="eyebrow">VOTRE ÉVALUATION</p>
               <h2>Paramètres du barème</h2>
+            </div>
           </div>
 
           <div class="field-grid">
@@ -54,6 +55,10 @@
               <span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto · 60"><span>%</span></span>
             </label>
           </div>
+
+          <details class="advanced-settings">
+            <summary><span class="settings-icon" aria-hidden="true">+</span>Paramètres avancés</summary>
+            <div class="advanced-grid field-grid">
               <label class="field" for="rounding">
                 <span>Arrondir la note</span>
                 <select id="rounding" name="rounding">
@@ -63,17 +68,16 @@
                   <option value="1">À l’entier le plus proche</option>
                   <option value="none">Sans arrondi</option>
                 </select>
+              </label>
               <label class="field field-wide" for="point-step">
-  <span>Intervalle des points</span>
-  <select id="point-step" name="pointStep">
-    <option value="0.25">0,25 point</option>
-    <option value="0.5" selected>0,5 point</option>
-    <option value="1">1 point entier</option>
-  </select>
-  <small class="field-help">
-    Écart entre les points affichés dans le tableau. Le total reste toujours affiché.
-  </small>
-</label>
+                <span>Intervalle des points</span>
+                <select id="point-step" name="pointStep">
+                  <option value="0.25">0,25 point</option>
+                  <option value="0.5" selected>0,5 point</option>
+                  <option value="1">1 point entier</option>
+                </select>
+                <small class="field-help">Écart entre les points affichés dans le tableau. Le total reste toujours affiché.</small>
+              </label>
             </div>
           </details>
 
@@ -85,7 +89,6 @@
         </form>
       </div>
 
-      
       <section class="results" aria-labelledby="results-title" aria-live="polite">
         <div class="results-heading">
           <div>
@@ -120,6 +123,6 @@
         </details>
       </section>
     </main>
-    <footer><span>ASEP BÊTA v0.1.2</span><span>Les calculs sont effectués dans votre navigateur.</span></footer>
+    <footer><span>ASEP v0.1.3 (bêta)</span><span>Les calculs sont effectués dans votre navigateur.</span></footer>
   </body>
 </html>
