@@ -174,6 +174,27 @@ form.addEventListener("reset", () => {
   });
 });
 
-printButton.addEventListener("click", () => window.print());
+const originalDocumentTitle = document.title;
+
+function setExportFilename() {
+  const dateValue = document.querySelector("#evaluation-date").value;
+  const date = dateValue ? new Date(`${dateValue}T00:00:00`) : new Date();
+  const datePart = `${String(date.getDate()).padStart(2, "0")}${String(date.getMonth() + 1).padStart(2, "0")}${date.getFullYear()}`;
+  const title = document.querySelector("#evaluation-title").value
+    .replace(/[\\/:*?\"<>|]/g, "")
+    .replace(/\s+/g, " ")
+    .trim() || "Barème";
+  document.title = `${datePart}_${title}`;
+}
+
+printButton.addEventListener("click", () => {
+  setExportFilename();
+  window.print();
+});
+
+window.addEventListener("beforeprint", setExportFilename);
+window.addEventListener("afterprint", () => {
+  document.title = originalDocumentTitle;
+});
 
 calculate();
