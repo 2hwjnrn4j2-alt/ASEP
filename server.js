@@ -1,8 +1,16 @@
+// ==========================================================
+// IMPORTS DU SERVEUR
+// ==========================================================
+
 import { createReadStream } from "node:fs";
 import { access, stat } from "node:fs/promises";
 import { createServer } from "node:http";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
+
+// ==========================================================
+// CONFIGURATION DU SERVEUR
+// ==========================================================
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const port = Number(process.env.PORT) || 4173;
@@ -11,6 +19,10 @@ const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
 };
+
+// ==========================================================
+// GESTION DES REQUÊTES HTTP
+// ==========================================================
 
 createServer(async (request, response) => {
   if (request.method !== "GET" && request.method !== "HEAD") {

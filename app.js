@@ -1,10 +1,22 @@
+// ==========================================================
+// IMPORTS DU BARÈME
+// ==========================================================
+
 import { formatNumber, generateTable, resolvePassingPercent, validateParameters } from "./calculator.js";
+
+// ==========================================================
+// ÉLÉMENTS DE L’INTERFACE
+// ==========================================================
 
 const form = document.querySelector("#grading-form");
 const resultsBody = document.querySelector("#results-body");
 const errorMessage = document.querySelector("#error-message");
 const rowCount = document.querySelector("#row-count");
 const printButton = document.querySelector("#print-button");
+
+// ==========================================================
+// INFORMATIONS SUR L’ÉVALUATION
+// ==========================================================
 
 function createEvaluationDetails() {
   const section = document.createElement("section");
@@ -51,12 +63,8 @@ function createEvaluationDetails() {
       .print-evaluation-heading p { display: flex; gap: 24px; margin: 0; color: #333; font-size: 11px; }
       .print-evaluation-heading p:empty { display: none; }
     }
-    @media (max-width: 760px) {
-      .evaluation-details { margin-bottom: 22px; padding-bottom: 19px; }
-    }
-    @media (max-width: 480px) {
-      .evaluation-details .field:not(.field-wide) { grid-column: 1 / -1; }
-    }`;
+    @media (max-width: 760px) { .evaluation-details { margin-bottom: 22px; padding-bottom: 19px; } }
+    @media (max-width: 480px) { .evaluation-details .field:not(.field-wide) { grid-column: 1 / -1; } }`;
   document.head.append(style);
 
   const titleInput = section.querySelector("#evaluation-title");
@@ -86,6 +94,10 @@ function createEvaluationDetails() {
 
 createEvaluationDetails();
 
+// ==========================================================
+// LECTURE DU FORMULAIRE
+// ==========================================================
+
 function readParameters() {
   const formData = new FormData(form);
   const optionalNumber = (name) => {
@@ -104,6 +116,10 @@ function readParameters() {
   };
 }
 
+// ==========================================================
+// AFFICHAGE DES ERREURS
+// ==========================================================
+
 function showErrors(errors) {
   errorMessage.replaceChildren();
   const list = document.createElement("ul");
@@ -119,6 +135,10 @@ function showErrors(errors) {
     rowCount.textContent = "";
   }
 }
+
+// ==========================================================
+// AFFICHAGE DU TABLEAU
+// ==========================================================
 
 function renderTable(parameters, rows) {
   const fragment = document.createDocumentFragment();
@@ -136,6 +156,10 @@ function renderTable(parameters, rows) {
   resultsBody.replaceChildren(fragment);
   rowCount.textContent = `${rows.length} ${rows.length > 1 ? "lignes" : "ligne"} · pas de ${formatNumber(rows.length > 1 ? rows[1].score - rows[0].score : parameters.totalPoints)} pt`;
 }
+
+// ==========================================================
+// CALCUL DU BARÈME
+// ==========================================================
 
 function calculate() {
   const parameters = readParameters();
@@ -162,21 +186,26 @@ function calculate() {
   }
 }
 
+// ==========================================================
+// ÉVÉNEMENTS DU FORMULAIRE
+// ==========================================================
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   calculate();
 });
-
 form.addEventListener("input", calculate);
-
 form.addEventListener("change", calculate);
-
 form.addEventListener("reset", () => {
   requestAnimationFrame(() => {
     document.querySelector("#evaluation-title").dispatchEvent(new Event("input", { bubbles: true }));
     calculate();
   });
 });
+
+// ==========================================================
+// IMPRESSION ET NOM DU FICHIER PDF
+// ==========================================================
 
 const originalDocumentTitle = document.title;
 
@@ -188,18 +217,20 @@ function setExportFilename() {
     .replace(/[\\/:*?"<>|]/g, "")
     .replace(/\s+/g, " ")
     .trim();
-  const filename = title ? `${datePart}_Barème_${title}` : `${datePart}_Barème`;
-  document.title = filename;
+  document.title = title ? `${datePart}_Barème_${title}` : `${datePart}_Barème`;
 }
 
 printButton.addEventListener("click", () => {
   setExportFilename();
   window.print();
 });
-
 window.addEventListener("beforeprint", setExportFilename);
 window.addEventListener("afterprint", () => {
   document.title = originalDocumentTitle;
 });
+
+// ==========================================================
+// CALCUL INITIAL
+// ==========================================================
 
 calculate();

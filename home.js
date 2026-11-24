@@ -1,15 +1,25 @@
+// ==========================================================
+// NAVIGATION DE L’APPLICATION
+// ==========================================================
+
 const homeView = document.querySelector("#home-view");
 const calculatorView = document.querySelector("#calculator-view");
 const searchInput = document.querySelector("#feature-search");
 const homeFeatureButton = document.querySelector("#open-grading");
 const emptyMessage = document.querySelector("#search-empty");
 
-// Garder uniquement le placeholder dans la barre de recherche.
+// ==========================================================
+// CONFIGURATION DE LA BARRE DE RECHERCHE
+// ==========================================================
+
 document.querySelector('.global-navigation label[for="feature-search"]')?.remove();
 searchInput.placeholder = "Rechercher";
 
-// La fonctionnalité Barème reste accessible depuis la carte située sous la barre.
 document.querySelector("#open-grading-nav")?.remove();
+
+// ==========================================================
+// OUVERTURE DU BARÈME
+// ==========================================================
 
 function openCalculator() {
   homeView.hidden = true;
@@ -19,6 +29,10 @@ function openCalculator() {
   document.querySelector("#grading-title").focus({ preventScroll: true });
 }
 
+// ==========================================================
+// RETOUR À L’ACCUEIL
+// ==========================================================
+
 function returnHome() {
   calculatorView.hidden = true;
   homeView.hidden = false;
@@ -26,6 +40,10 @@ function returnHome() {
   window.scrollTo({ top: 0, behavior: "smooth" });
   searchInput.focus({ preventScroll: true });
 }
+
+// ==========================================================
+// ÉVÉNEMENTS DE NAVIGATION
+// ==========================================================
 
 homeFeatureButton.addEventListener("click", openCalculator);
 document.querySelector("#back-home").addEventListener("click", returnHome);
@@ -35,6 +53,10 @@ document.querySelector("#brand-home").addEventListener("click", (event) => {
     returnHome();
   }
 });
+
+// ==========================================================
+// RECHERCHE DES FONCTIONNALITÉS
+// ==========================================================
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLocaleLowerCase("fr");
