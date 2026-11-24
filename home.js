@@ -47,7 +47,6 @@ newsView.innerHTML = `
     <button id="back-home-news" class="back-home" type="button"><span aria-hidden="true">←</span> Retour à l’accueil</button>
     <section class="intro news-heading" aria-labelledby="news-title">
       <div>
-        <p class="eyebrow">ACTUALITÉS</p>
         <h1 id="news-title">Nouveautés</h1>
         <p>Les améliorations, nouvelles fonctionnalités et corrections apportées à chaque mise à jour.</p>
       </div>
@@ -55,7 +54,7 @@ newsView.innerHTML = `
     <div class="news-list" aria-live="polite">
       <article class="news-card">
         <div class="news-card-header"><span class="news-version">Version 0.4.0</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></div>
-        <h2>Nouveau journal des mises à jour</h2>
+        <h2>Nouvel onglet "Nouveautés"</h2>
         <p>ASEP accueille un onglet « Nouveautés » permettant de retrouver facilement les changements apportés au site.</p>
         <ul><li>Accès depuis la page d’accueil.</li><li>Présentation des versions.</li><li>Historique des nouveautés et améliorations.</li></ul>
       </article>
