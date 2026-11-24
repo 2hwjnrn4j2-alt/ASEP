@@ -1,5 +1,34 @@
 // Navigation entre les vues, recherche des outils et gestion du focus.
 export function initializeNavigation() {
+  const newsSection = document.querySelector("#news-view");
+  const backHomeButton = newsSection?.querySelector(".back-home");
+  const newsList = newsSection?.querySelector(".news-list");
+
+  // Répare la structure de l'en-tête si elle a été altérée dans le HTML.
+  if (newsSection && backHomeButton && newsList && !newsSection.querySelector("#news-title")) {
+    const newsView = document.createElement("div");
+    newsView.className = "news-view";
+
+    const heading = document.createElement("header");
+    heading.className = "intro news-heading";
+    const headingContent = document.createElement("div");
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = "JOURNAL DU PRODUIT";
+    const title = document.createElement("h1");
+    title.id = "news-title";
+    title.tabIndex = -1;
+    title.textContent = "Nouveautés";
+    const description = document.createElement("p");
+    description.className = "intro-copy";
+    description.textContent = "Les améliorations, nouvelles fonctionnalités et corrections apportées au site.";
+
+    headingContent.append(eyebrow, title, description);
+    heading.append(headingContent);
+    newsView.append(backHomeButton, heading, newsList);
+    newsSection.replaceChildren(newsView);
+  }
+
   const views = [...document.querySelectorAll("main > section[id]")];
   const searchInput = document.querySelector("#feature-search");
   const featureButtons = [...document.querySelectorAll(".feature-navigation [data-view]")];
@@ -43,7 +72,8 @@ export function initializeNavigation() {
 
   document.querySelector("#brand-home")?.addEventListener("click", (event) => {
     event.preventDefault();
-    showView("home-view", { moveFocus: true });
+    showView("home-view");
+    searchInput?.focus({ preventScroll: true });
   });
 
   window.addEventListener("popstate", restoreViewFromLocation);
