@@ -21,7 +21,6 @@ export function validateParameters(parameters) {
   if (passingGrade <= minGrade || passingGrade >= maxGrade) {
     errors.push("La note de réussite doit être comprise strictement entre les notes minimale et maximale.");
   }
-
   if (passingPercent !== null && (!Number.isFinite(passingPercent) || passingPercent <= 0 || passingPercent >= 100)) {
     errors.push("Le seuil de réussite doit être compris entre 0 % et 100 %.");
   }
