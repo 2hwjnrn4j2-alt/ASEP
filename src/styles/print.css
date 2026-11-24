@@ -1,0 +1,18 @@
+/* Présentation imprimée : conserver le barème, masquer les contrôles. */
+@media print {
+  body { background: #fff; }
+  .site-header, #home-view, .back-home, .intro, .settings-card, .about-section, footer, .result-actions, .table-note { display: none !important; }
+  main { width: 100%; margin: 0; }
+  #calculator-view { padding: 0; }
+  .results { margin: 0; padding: 0; border: 0; box-shadow: none; }
+  .results-heading { margin-bottom: 12px; }
+  .table-wrap { max-height: none; overflow: visible; border: 0; }
+  thead { position: static; }
+  th, td { padding: 6px 9px; }
+  tbody tr { break-inside: avoid; }
+  .print-evaluation-heading { display: block; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #aaa; }
+  .print-evaluation-heading h2 { margin: 0 0 7px; font-size: 22px; }
+  .print-evaluation-heading p { display: flex; gap: 24px; margin: 0; color: #333; font-size: 11px; }
+  .print-evaluation-heading p:empty { display: none; }
+}
+.print-evaluation-heading { display: none; }

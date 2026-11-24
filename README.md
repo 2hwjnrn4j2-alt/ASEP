@@ -1,25 +1,49 @@
-# Générateur de barèmes
+# ASEP — Espace enseignant
 
-Application web en français pour créer un barème de notes d'école primaire. Elle fonctionne sans dépendance ni service externe ; les calculs restent dans le navigateur.
+Application web en français qui rassemble des outils simples pour les enseignantes et enseignants. Elle fonctionne sans dépendance de production ; les calculs du barème restent dans le navigateur.
 
-## Lancer l'application
+## Démarrer le projet
 
-Avec Node.js 18 ou plus récent :
+Prérequis : Node.js 18 ou une version plus récente.
 
 ```sh
 npm start
 ```
 
-Ouvrez ensuite [http://localhost:4173](http://localhost:4173). Le port peut être modifié avec la variable d'environnement `PORT`.
+Ouvrez ensuite [http://localhost:4173](http://localhost:4173). Le port peut être modifié avec la variable d’environnement `PORT`.
 
-## Calcul des notes
-
-Les points sont convertis en pourcentage du total, après déduction de la pénalité éventuelle. Sans seuil de réussite saisi, le pourcentage du seuil est déduit des notes minimale, de réussite et maximale. La note est interpolée linéairement entre la note minimale à 0 %, la note de réussite au seuil et la note maximale à 100 %. Pour l'échelle 1–6, avec 4 comme seuil à 60 %, cela équivaut à `1 + 5 × (pourcentage / 100)`. La note est arrondie selon la règle choisie et reste dans les bornes configurées.
-
-Le tableau affiche les points obtenus par pas personnalisé ou, par défaut, par un pas automatique adapté au total. Le total est toujours affiché, même s'il ne correspond pas exactement au dernier pas.
-
-## Tests
+## Lancer les tests
 
 ```sh
 npm test
 ```
+
+## Organisation du code
+
+```text
+.
+├── index.html                 # Structure et contenu des vues
+├── src/
+│   ├── main.js                # Point d’entrée et initialisation
+│   ├── features/
+│   │   ├── grading/           # Calcul métier et interface du barème
+│   │   └── navigation/        # Navigation entre les vues et recherche
+│   └── styles/                # CSS commun, composants, pages et adaptations
+├── server/
+│   └── server.js              # Serveur HTTP de développement
+├── tests/                     # Tests automatisés
+└── package.json               # Scripts et métadonnées du projet
+```
+
+### Ajouter une fonctionnalité
+
+1. Créez un dossier dans `src/features/` avec le nom de la fonctionnalité.
+2. Gardez sa logique et son interface dans des modules dédiés à ce dossier.
+3. Ajoutez sa vue dans `index.html`, puis son style dans `src/styles/features.css` ou dans une nouvelle feuille importée par `src/styles/main.css`.
+4. Initialisez la fonctionnalité depuis `src/main.js` et ajoutez ses tests dans `tests/`.
+
+Les anciens fichiers JavaScript/CSS à la racine sont conservés comme points de compatibilité. Les nouvelles modifications doivent se faire dans `src/` ou `server/`.
+
+## Calcul des notes
+
+Les points obtenus sont convertis en pourcentage du total. La note progresse par interpolation linéaire entre la note minimale (0 %), la note de réussite (seuil défini ou déduit) et la note maximale (100 %). Le résultat peut être arrondi selon le réglage sélectionné. Le tableau affiche les points avec un intervalle choisi ou calculé automatiquement et inclut toujours le total exact.
