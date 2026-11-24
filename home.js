@@ -54,7 +54,7 @@ newsView.innerHTML = `
     <div class="news-list" aria-live="polite">
       <article class="news-card">
         <div class="news-card-header"><span class="news-version">Version 0.4.0</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></div>
-        <h2>Nouvel onglet "Nouveautés"</h2>
+        <h2>Nouvel onglet « Nouveautés »</h2>
         <p>ASEP accueille un onglet « Nouveautés » permettant de retrouver facilement les changements apportés au site.</p>
         <ul><li>Accès depuis la page d’accueil.</li><li>Présentation des versions.</li><li>Historique des nouveautés et améliorations.</li></ul>
       </article>
