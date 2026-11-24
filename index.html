@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="fr">
-  <!-- ========================================================== 
+  <!-- ==========================================================
        MÉTADONNÉES ET CHARGEMENT DES FICHIERS
        ========================================================== -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fff3f6">
-    <meta name="description" content="ASEP, des outils simples pour accompagner les enseignantes et enseignants du primaire.">
+    <meta name="description" content="ASEP, des outils simples les enseignantes et enseignants.">
     <title>ASEP — Espace enseignant</title>
 
+    <!-- Feuilles de style -->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./homepage.css">
+
+    <!-- Modules JavaScript -->
     <script type="module" src="./app.js"></script>
     <script type="module" src="./home.js"></script>
   </head>
 
   <body>
-    <!-- ========================================================== 
+    <!-- ==========================================================
          EN-TÊTE PRINCIPAL
          ========================================================== -->
     <header class="site-header">
@@ -26,11 +29,11 @@
         <span>ASEP</span>
       </a>
 
-      <nav class="global-navigation" aria-label="Navigation principale">
+      <nav class="global-navigation" aria-label="Navigation">
         <label class="visually-hidden" for="feature-search">Recherche</label>
         <div class="search-wrap">
           <span aria-hidden="true">⌕</span>
-          <input id="feature-search" type="search" placeholder="Rechercher une fonctionnalité…" autocomplete="off">
+          <input id="feature-search" type="search" placeholder="Rechercher…" autocomplete="off">
         </div>
         <button class="nav-feature-button" id="open-grading-nav" type="button" data-search="barème notes évaluation points créer">
           Barème <span aria-hidden="true">→</span>
@@ -41,7 +44,7 @@
     </header>
 
     <main>
-      <!-- ========================================================== 
+      <!-- ==========================================================
            PAGE D’ACCUEIL
            ========================================================== -->
       <div id="home-view">
@@ -54,23 +57,18 @@
         <section class="feature-navigation" aria-label="Fonctionnalités">
           <button class="feature-link feature-link-primary" id="open-grading" type="button" data-search="barème notes évaluation points créer">
             <span class="feature-icon" aria-hidden="true">✎</span>
-            <span>
-              <strong>Créer un barème</strong>
-              <small>Générer les notes de votre évaluation</small>
-            </span>
+            <span><strong>Barème</strong><small>Générer le barème de votre évaluation</small></span>
             <span class="feature-arrow" aria-hidden="true">→</span>
           </button>
           <p id="search-empty" class="search-empty" role="status" hidden>Aucune fonctionnalité trouvée.</p>
         </section>
       </div>
 
-      <!-- ========================================================== 
+      <!-- ==========================================================
            PAGE DU CALCULATEUR DE BARÈME
            ========================================================== -->
       <div id="calculator-view" hidden>
-        <button id="back-home" class="back-home" type="button">
-          <span aria-hidden="true">←</span> Retour à l’accueil
-        </button>
+        <button id="back-home" class="back-home" type="button"><span aria-hidden="true">←</span> Retour à l’accueil</button>
 
         <section class="intro" aria-labelledby="grading-title">
           <p class="eyebrow">BARÈME DE NOTES</p>
@@ -78,68 +76,26 @@
           <p class="intro-copy">Définissez votre échelle de notes et obtenez aussitôt les notes correspondant aux points de l’évaluation.</p>
         </section>
 
-        <!-- ========================================================== 
+        <!-- ==========================================================
              FORMULAIRE DES PARAMÈTRES
              ========================================================== -->
         <div class="workspace">
           <form id="grading-form" class="settings-card" novalidate>
-            <div class="card-heading">
-              <div>
-                <p class="eyebrow">VOTRE ÉVALUATION</p>
-                <h2>Paramètres du barème</h2>
-              </div>
-            </div>
+            <div class="card-heading"><div><p class="eyebrow">VOTRE ÉVALUATION</p><h2>Paramètres du barème</h2></div></div>
 
             <div class="field-grid">
-              <label class="field field-wide" for="total-points">
-                <span>Total de points</span>
-                <span class="input-wrap"><input id="total-points" name="totalPoints" type="number" min="0.01" step="any" value="20" required></span>
-              </label>
-              <label class="field" for="min-grade">
-                <span>Note minimale</span>
-                <input id="min-grade" name="minGrade" type="number" step="any" value="1" required>
-              </label>
-              <label class="field" for="max-grade">
-                <span>Note maximale</span>
-                <input id="max-grade" name="maxGrade" type="number" step="any" value="6" required>
-              </label>
-              <label class="field" for="passing-grade">
-                <span>Note de réussite</span>
-                <input id="passing-grade" name="passingGrade" type="number" step="any" value="4" required>
-              </label>
+              <label class="field field-wide" for="total-points"><span>Total de points</span><span class="input-wrap"><input id="total-points" name="totalPoints" type="number" min="0.01" step="any" value="20" required></span></label>
+              <label class="field" for="min-grade"><span>Note minimale</span><input id="min-grade" name="minGrade" type="number" step="any" value="1" required></label>
+              <label class="field" for="max-grade"><span>Note maximale</span><input id="max-grade" name="maxGrade" type="number" step="any" value="6" required></label>
+              <label class="field" for="passing-grade"><span>Note de réussite</span><input id="passing-grade" name="passingGrade" type="number" step="any" value="4" required></label>
             </div>
 
             <details class="advanced-settings">
               <summary><span class="settings-icon" aria-hidden="true">+</span>Paramètres avancés</summary>
               <div class="advanced-grid field-grid">
-                <label class="field" for="passing-percent">
-                  <span>Seuil de réussite <span class="optional">optionnel</span></span>
-                  <span class="input-wrap">
-                    <input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto">
-                    <span>%</span>
-                  </span>
-                </label>
-
-                <label class="field" for="rounding">
-                  <span>Arrondir la note</span>
-                  <select id="rounding" name="rounding">
-                    <option value="1">À l’entier le plus proche</option>
-                    <option value="0.5" selected>Au demi-point le plus proche</option>
-                    <option value="0.25">Au quart de point le plus proche</option>
-                    <option value="0.1">Au dixième le plus proche</option>
-                    <option value="none">Sans arrondi</option>
-                  </select>
-                </label>
-
-                <label class="field field-wide" for="point-step">
-                  <span>Intervalle des points</span>
-                  <select id="point-step" name="pointStep">
-                    <option value="0.25">0,25 point</option>
-                    <option value="0.5">0,5 point</option>
-                    <option value="1" selected>1 point</option>
-                    <option value="">Automatique</option>
-                  </select>
-                </label>
+                <label class="field" for="passing-percent"><span>Seuil de réussite <span class="optional">optionnel</span></span><span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto"><span>%</span></span></label>
+                <label class="field" for="rounding"><span>Arrondir la note</span><select id="rounding" name="rounding"><option value="1">À l’entier le plus proche</option><option value="0.5" selected>Au demi-point le plus proche</option><option value="0.25">Au quart de point le plus proche</option><option value="0.1">Au dixième le plus proche</option><option value="none">Sans arrondi</option></select></label>
+                <label class="field field-wide" for="point-step"><span>Intervalle des points</span><select id="point-step" name="pointStep"><option value="0.25">0,25 point</option><option value="0.5">0,5 point</option><option value="1" selected>1 point</option><option value="">Automatique</option></select></label>
               </div>
             </details>
 
@@ -152,55 +108,30 @@
           </form>
         </div>
 
-        <!-- ========================================================== 
+        <!-- ==========================================================
              TABLEAU DES RÉSULTATS
              ========================================================== -->
         <section class="results" aria-labelledby="results-title" aria-live="polite">
-          <div class="results-heading">
-            <div>
-              <p class="eyebrow">VOTRE BARÈME</p>
-              <h2 id="results-title">Notes par points</h2>
-            </div>
-            <div class="result-actions">
-              <span id="row-count" class="row-count"></span>
-              <button class="button button-outline" id="print-button" type="button"><span aria-hidden="true">⇩</span> Imprimer / PDF</button>
-            </div>
-          </div>
-
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th scope="col">Points obtenus</th><th scope="col">Note</th></tr></thead>
-              <tbody id="results-body"></tbody>
-            </table>
-          </div>
+          <div class="results-heading"><div><p class="eyebrow">VOTRE BARÈME</p><h2 id="results-title">Notes par points</h2></div><div class="result-actions"><span id="row-count" class="row-count"></span><button class="button button-outline" id="print-button" type="button"><span aria-hidden="true">⇩</span> Imprimer / PDF</button></div></div>
+          <div class="table-wrap"><table><thead><tr><th scope="col">Points obtenus</th><th scope="col">Note</th></tr></thead><tbody id="results-body"></tbody></table></div>
           <p class="table-note">Utilisez « Imprimer / PDF » pour imprimer ou enregistrer votre barème.</p>
         </section>
 
-        <!-- ========================================================== 
+        <!-- ==========================================================
              EXPLICATION DU CALCUL
              ========================================================== -->
         <section id="about-calculation" class="about-section">
-          <details>
-            <summary>À propos du calcul</summary>
-            <div class="about-content">
-              <p>Le calcul relie la note minimale à 0 %, la note de réussite au seuil choisi et la note maximale à 100 %, par interpolation linéaire. Sans seuil indiqué, il est déduit des notes minimale, maximale et de réussite.</p>
-              <div class="formula-example">
-                <span>Exemple courant</span>
-                <strong>1 + 5 × (points ÷ total)</strong>
-                <small>Pour une échelle de 1 à 6 avec 4 à 60 %, la note est arrondie au 0,5 le plus proche.</small>
-              </div>
-            </div>
-          </details>
+          <details><summary>À propos du calcul</summary><div class="about-content">
+            <p>Le calcul relie la note minimale à 0 %, la note de réussite au seuil choisi et la note maximale à 100 %, par interpolation linéaire. Sans seuil indiqué, il est déduit des notes minimale, maximale et de réussite.</p>
+            <div class="formula-example"><span>Exemple courant</span><strong>1 + 5 × (points ÷ total)</strong><small>Pour une échelle de 1 à 6 avec 4 à 60 %, la note est arrondie au 0,5 le plus proche.</small></div>
+          </div></details>
         </section>
       </div>
     </main>
 
-    <!-- ========================================================== 
+    <!-- ==========================================================
          PIED DE PAGE
          ========================================================== -->
-    <footer>
-      <span>ASEP v0.3.0</span>
-      <span>Les calculs sont effectués dans votre navigateur.</span>
-    </footer>
+    <footer><span>ASEP v0.4.0</span><span>Les calculs sont effectués dans votre navigateur.</span></footer>
   </body>
 </html>

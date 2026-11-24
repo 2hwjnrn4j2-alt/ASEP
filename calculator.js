@@ -42,7 +42,15 @@ export function resolvePassingPercent({ minGrade, maxGrade, passingGrade, passin
 // CALCUL D’UNE NOTE
 // ==========================================================
 
-export function calculateGrade({ score, totalPoints, minGrade, maxGrade, passingGrade, passingPercent, rounding = 0.5 }) {
+export function calculateGrade({
+  score,
+  totalPoints,
+  minGrade,
+  maxGrade,
+  passingGrade,
+  passingPercent,
+  rounding = 0.5,
+}) {
   const parameters = { totalPoints, minGrade, maxGrade, passingGrade, passingPercent };
   const errors = validateParameters(parameters);
   if (errors.length) throw new RangeError(errors.join(" "));

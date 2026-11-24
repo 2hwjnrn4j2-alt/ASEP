@@ -1,9 +1,22 @@
+// ==========================================================
+// IMPORTS DU CALCULATEUR
+// ==========================================================
+
 import { formatNumber, generateTable, resolvePassingPercent, validateParameters } from "./calculator.js";
+
+// ==========================================================
+// ÉLÉMENTS DE L’INTERFACE
+// ==========================================================
+
 const form = document.querySelector("#grading-form");
 const resultsBody = document.querySelector("#results-body");
 const errorMessage = document.querySelector("#error-message");
 const rowCount = document.querySelector("#row-count");
 const printButton = document.querySelector("#print-button");
+
+// ==========================================================
+// INFORMATIONS SUR L’ÉVALUATION
+// ==========================================================
 
 function createEvaluationDetails() {
   const section = document.createElement("section");
@@ -81,6 +94,10 @@ function createEvaluationDetails() {
 
 createEvaluationDetails();
 
+// ==========================================================
+// LECTURE DU FORMULAIRE
+// ==========================================================
+
 function readParameters() {
   const formData = new FormData(form);
   const optionalNumber = (name) => {
@@ -99,6 +116,10 @@ function readParameters() {
   };
 }
 
+// ==========================================================
+// AFFICHAGE DES ERREURS
+// ==========================================================
+
 function showErrors(errors) {
   errorMessage.replaceChildren();
   const list = document.createElement("ul");
@@ -114,6 +135,10 @@ function showErrors(errors) {
     rowCount.textContent = "";
   }
 }
+
+// ==========================================================
+// AFFICHAGE DU TABLEAU
+// ==========================================================
 
 function renderTable(parameters, rows) {
   const fragment = document.createDocumentFragment();
@@ -131,6 +156,10 @@ function renderTable(parameters, rows) {
   resultsBody.replaceChildren(fragment);
   rowCount.textContent = `${rows.length} ${rows.length > 1 ? "lignes" : "ligne"} · pas de ${formatNumber(rows.length > 1 ? rows[1].score - rows[0].score : parameters.totalPoints)} pt`;
 }
+
+// ==========================================================
+// CALCUL DU BARÈME
+// ==========================================================
 
 function calculate() {
   const parameters = readParameters();
@@ -157,6 +186,10 @@ function calculate() {
   }
 }
 
+// ==========================================================
+// ÉVÉNEMENTS DU FORMULAIRE
+// ==========================================================
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   calculate();
@@ -169,6 +202,10 @@ form.addEventListener("reset", () => {
     calculate();
   });
 });
+
+// ==========================================================
+// IMPRESSION ET NOM DU FICHIER PDF
+// ==========================================================
 
 const originalDocumentTitle = document.title;
 
@@ -191,5 +228,9 @@ window.addEventListener("beforeprint", setExportFilename);
 window.addEventListener("afterprint", () => {
   document.title = originalDocumentTitle;
 });
+
+// ==========================================================
+// CALCUL INITIAL
+// ==========================================================
 
 calculate();

@@ -51,6 +51,7 @@ createServer(async (request, response) => {
       "Content-Type": contentTypes[extname(filePath)] ?? "application/octet-stream",
       "X-Content-Type-Options": "nosniff",
     });
+
     if (request.method === "HEAD") {
       response.end();
     } else {

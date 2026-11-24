@@ -129,39 +129,16 @@ h2 {
 /* ==========================================================
    CHAMP DU FORMULAIRE
    ========================================================== */
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 17px 14px;
-}
-
-.field {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 7px;
-  color: #43564e;
-  font-size: 12px;
-  font-weight: 600;
-}
-
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px 14px; }
+.field { display: flex; min-width: 0; flex-direction: column; gap: 7px; color: #43564e; font-size: 12px; font-weight: 600; }
 .field-wide { grid-column: 1 / -1; }
 .optional { color: #89978f; font-size: 10px; font-weight: 450; }
 
 .field input, .field select {
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  height: 42px;
-  border: 1px solid #dce5df;
-  border-radius: 7px;
-  outline: none;
-  background: white;
-  color: var(--ink);
-  font: inherit;
-  font-size: 14px;
-  padding: 0 12px;
-  transition: border-color .15s, box-shadow .15s;
+  width: 100%; min-width: 0; max-width: 100%; height: 42px;
+  border: 1px solid #dce5df; border-radius: 7px; outline: none;
+  background: white; color: var(--ink); font: inherit; font-size: 14px;
+  padding: 0 12px; transition: border-color .15s, box-shadow .15s;
 }
 
 .field input:focus, .field select:focus {
@@ -219,21 +196,7 @@ h2 {
    BOUTONS ET ACTIONS
    ========================================================== */
 .form-actions { display: flex; gap: 12px; align-items: center; padding-top: 20px; }
-
-.button {
-  display: inline-flex;
-  min-height: 40px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  cursor: pointer;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 650;
-}
-
+.button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent; border-radius: 7px; cursor: pointer; font: inherit; font-size: 12px; font-weight: 650; }
 .button-primary { padding: 0 16px; background: var(--green); color: white; }
 .button-primary:hover { background: var(--green-dark); }
 .button-quiet { padding: 0 10px; background: transparent; color: #65756e; }
@@ -244,34 +207,14 @@ h2 {
 /* ==========================================================
    MESSAGES ET ERREURS
    ========================================================== */
-.error-message {
-  margin-top: 15px;
-  padding: 10px 13px;
-  border: 1px solid #f0cfc5;
-  border-radius: 7px;
-  background: #fff7f4;
-  color: #963f2e;
-  font-size: 12px;
-  line-height: 1.55;
-}
-
+.error-message { margin-top: 15px; padding: 10px 13px; border: 1px solid #f0cfc5; border-radius: 7px; background: #fff7f4; color: #963f2e; font-size: 12px; line-height: 1.55; }
 .error-message ul { margin: 0; padding-left: 18px; }
 .error-message[hidden] { display: none; }
 
 /* ==========================================================
    EXEMPLES ET FORMULES
    ========================================================== */
-.formula-example {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: 20px;
-  padding: 14px;
-  border: 1px solid #dce9df;
-  border-radius: 8px;
-  background: rgba(255,255,255,.72);
-}
-
+.formula-example { display: flex; flex-direction: column; gap: 7px; margin-top: 20px; padding: 14px; border: 1px solid #dce9df; border-radius: 8px; background: rgba(255,255,255,.72); }
 .formula-example span { color: #77877e; font-size: 10px; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; }
 .formula-example strong { color: var(--green-dark); font-size: 14px; }
 .formula-example small { color: #6f7e76; font-size: 10px; line-height: 1.55; }
@@ -304,21 +247,8 @@ tbody tr:hover { background: #fafcfb; }
 /* ==========================================================
    SECTION À PROPOS DU CALCUL
    ========================================================== */
-.about-section {
-  margin-top: 16px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: white;
-}
-
-.about-section summary {
-  padding: 15px 19px;
-  color: #43564e;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 650;
-}
-
+.about-section { margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; background: white; }
+.about-section summary { padding: 15px 19px; color: #43564e; cursor: pointer; font-size: 12px; font-weight: 650; }
 .about-section summary::marker { color: var(--green); }
 .about-content { padding: 0 19px 17px; color: #687970; font-size: 12px; line-height: 1.65; }
 .about-content > p:first-child { margin-top: 0; }
@@ -327,16 +257,7 @@ tbody tr:hover { background: #fafcfb; }
 /* ==========================================================
    PIED DE PAGE
    ========================================================== */
-footer {
-  display: flex;
-  width: min(1110px, calc(100% - 48px));
-  margin: 29px auto 0;
-  padding: 17px 0 25px;
-  justify-content: space-between;
-  border-top: 1px solid #e1e9e4;
-  color: #849189;
-  font-size: 10px;
-}
+footer { display: flex; width: min(1110px, calc(100% - 48px)); margin: 29px auto 0; padding: 17px 0 25px; justify-content: space-between; border-top: 1px solid #e1e9e4; color: #849189; font-size: 10px; }
 
 /* ==========================================================
    ADAPTATION AUX PETITS ÉCRANS
@@ -351,17 +272,8 @@ footer {
   .result-actions { gap: 8px; }
   .row-count { display: none; }
   footer { width: calc(100% - 32px); gap: 12px; font-size: 9px; }
-
-  .evaluation-details .field-grid,
-  .evaluation-details .field-grid > .field { min-width: 0; }
-
-  .evaluation-details input[type="date"] {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    appearance: none;
-    -webkit-appearance: none;
-  }
+  .evaluation-details .field-grid, .evaluation-details .field-grid > .field { min-width: 0; }
+  .evaluation-details input[type="date"] { width: 100%; min-width: 0; max-width: 100%; appearance: none; -webkit-appearance: none; }
 }
 
 @media (max-width: 480px) {
