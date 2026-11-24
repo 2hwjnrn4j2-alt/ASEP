@@ -3,8 +3,12 @@ body.news-active { --canvas: #fff; --ink: #222; --muted: #666; --line: #ddd; bac
 body.news-active .site-header { background: #fff; }
 body.news-active .brand-mark { background: #222; }
 body.news-active .search-wrap { border-color: #ccc; color: #333; }
-body.news-active .news-view { color: #222; }
+body.news-active .search-wrap:focus-within { border-color: #555; box-shadow: 0 0 0 3px rgba(0, 0, 0, .1); }
+body.news-active .search-wrap input { color: #222; }
+body.news-active .news-view { width: 100%; max-width: 900px; margin: 20px auto 50px; color: #222; }
+body.news-active .news-heading { padding-top: 35px; text-align: left; }
 body.news-active .news-heading .eyebrow { color: #555; }
+body.news-active .news-heading h1 { color: #222; font-size: clamp(36px, 5vw, 56px); }
 body.news-active .news-heading .intro-copy { color: #666; }
 body.news-active .news-card { border-color: #ddd; background: #fff; box-shadow: 0 5px 22px rgba(0, 0, 0, .045); }
 body.news-active .news-version { background: #222; color: #fff; }
@@ -12,5 +16,8 @@ body.news-active .news-date { color: #666; }
 body.news-active .news-card h2 { color: #222; }
 body.news-active .news-card p,
 body.news-active .news-card ul { color: #444; }
-body.news-active #news-view .back-home { border-color: #f0cbd8; background: #fce8ef; color: #963b5d; }
-body.news-active #news-view .back-home:hover { border-color: #e8b6c8; background: #f8dce6; }
+body.news-active footer { border-color: #ddd; color: #666; }
+
+/* Le bouton de retour conserve le rose, quel que soit le thème de la page. */
+.back-home { border-color: #f0cbd8; background: #fce8ef; color: #963b5d; }
+.back-home:hover { border-color: #e8b6c8; background: #f8dce6; }
