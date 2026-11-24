@@ -3,6 +3,7 @@ const calculatorView = document.querySelector("#calculator-view");
 const searchInput = document.querySelector("#feature-search");
 const homeFeatureButton = document.querySelector("#open-grading");
 const emptyMessage = document.querySelector("#search-empty");
+const calculatorFooterNote = document.querySelector("footer span:nth-child(2)");
 
 // Garder uniquement le placeholder dans la barre de recherche.
 document.querySelector('.global-navigation label[for="feature-search"]')?.remove();
@@ -48,11 +49,22 @@ newsFeatureButton.dataset.search = "nouveautés nouveautés actualités mises à
 newsFeatureButton.innerHTML = '<span class="feature-icon" aria-hidden="true">✦</span><span><strong>Nouveautés</strong><small>Découvrir les dernières mises à jour du site</small></span><span class="feature-arrow" aria-hidden="true">→</span>';
 document.querySelector(".feature-navigation").prepend(newsFeatureButton);
 
+function showCalculatorFooterNote() {
+  if (calculatorFooterNote) calculatorFooterNote.hidden = false;
+}
+
+function hideCalculatorFooterNote() {
+  if (calculatorFooterNote) calculatorFooterNote.hidden = true;
+}
+
+hideCalculatorFooterNote();
+
 function openCalculator() {
   homeView.hidden = true;
   newsView.hidden = true;
   calculatorView.hidden = false;
   document.body.classList.add("calculator-active");
+  showCalculatorFooterNote();
   window.scrollTo({ top: 0, behavior: "smooth" });
   document.querySelector("#grading-title").focus({ preventScroll: true });
 }
@@ -62,6 +74,7 @@ function openNews() {
   calculatorView.hidden = true;
   newsView.hidden = false;
   document.body.classList.remove("calculator-active");
+  hideCalculatorFooterNote();
   window.scrollTo({ top: 0, behavior: "smooth" });
   document.querySelector("#news-title").focus({ preventScroll: true });
 }
@@ -71,6 +84,7 @@ function returnHome() {
   newsView.hidden = true;
   homeView.hidden = false;
   document.body.classList.remove("calculator-active");
+  hideCalculatorFooterNote();
   window.scrollTo({ top: 0, behavior: "smooth" });
   searchInput.focus({ preventScroll: true });
 }
