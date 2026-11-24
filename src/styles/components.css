@@ -25,5 +25,5 @@ h2 { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -.025em; }
 .button-quiet:hover { background: #f2f5f3; }
 .button-outline { min-height: 35px; padding: 0 12px; border-color: #dce5df; background: #fff; color: #44574e; }
 .button-outline:hover { background: #f5f8f6; }
-.back-home { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid #dce5df; border-radius: 7px; background: #fff; color: var(--green-dark); cursor: pointer; }
-.back-home:hover { background: var(--green-pale); }
+.back-home { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid #f0cbd8; border-radius: 7px; background: #fce8ef; color: #963b5d; cursor: pointer; }
+.back-home:hover { border-color: #e8b6c8; background: #f8dce6; }

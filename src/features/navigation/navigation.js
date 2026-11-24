@@ -1,17 +1,68 @@
 // Navigation entre les vues, recherche des outils et gestion du focus.
 export function initializeNavigation() {
+  const newsSection = document.querySelector("#news-view");
+  const backHomeButton = newsSection?.querySelector(".back-home");
+  const newsList = newsSection?.querySelector(".news-list");
+
+  // Répare la structure de l'en-tête si elle a été altérée dans le HTML.
+  if (newsSection && backHomeButton && newsList && !newsSection.querySelector("#news-title")) {
+    const newsView = document.createElement("div");
+    newsView.className = "news-view";
+
+    const heading = document.createElement("header");
+    heading.className = "intro news-heading";
+    const headingContent = document.createElement("div");
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = "JOURNAL DU PRODUIT";
+    const title = document.createElement("h1");
+    title.id = "news-title";
+    title.tabIndex = -1;
+    title.textContent = "Nouveautés";
+    const description = document.createElement("p");
+    description.className = "intro-copy";
+    description.textContent = "Les améliorations, nouvelles fonctionnalités et corrections apportées au site.";
+
+    headingContent.append(eyebrow, title, description);
+    heading.append(headingContent);
+    newsView.append(backHomeButton, heading, newsList);
+    newsSection.replaceChildren(newsView);
+  }
+
   const views = [...document.querySelectorAll("main > section[id]")];
   const searchInput = document.querySelector("#feature-search");
   const featureButtons = [...document.querySelectorAll(".feature-navigation [data-view]")];
   const emptyMessage = document.querySelector("#search-empty");
   const footerNote = document.querySelector("#footer-note");
 
-  function showView(viewId, { moveFocus = true } = {}) {
+  const viewPaths = {
+    "home-view": "#accueil",
+    "calculator-view": "#bareme",
+    "news-view": "#nouveautés",
+  };
+  const pathViews = Object.fromEntries(Object.entries(viewPaths).map(([viewId, path]) => [path, viewId]));
+
+  function showView(viewId, { moveFocus = true, updateHistory = true } = {}) {
+    if (!views.some((view) => view.id === viewId)) viewId = "home-view";
+
     for (const view of views) view.hidden = view.id !== viewId;
     document.body.classList.toggle("calculator-active", viewId === "calculator-view");
+    document.body.classList.toggle("news-active", viewId === "news-view");
     if (footerNote) footerNote.hidden = viewId !== "calculator-view";
+
+    if (updateHistory) {
+      const nextHash = viewPaths[viewId];
+      if (window.location.hash !== nextHash) {
+        window.history.pushState({ viewId }, "", `${window.location.pathname}${window.location.search}${nextHash}`);
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (moveFocus) document.querySelector(`#${viewId} h1`)?.focus({ preventScroll: true });
+  }
+
+  function restoreViewFromLocation() {
+    showView(pathViews[window.location.hash] || "home-view", { updateHistory: false });
   }
 
   document.addEventListener("click", (event) => {
@@ -20,11 +71,12 @@ export function initializeNavigation() {
   });
 
   document.querySelector("#brand-home")?.addEventListener("click", (event) => {
-    if (!document.querySelector("#home-view").hidden) return;
     event.preventDefault();
     showView("home-view");
     searchInput?.focus({ preventScroll: true });
   });
+
+  window.addEventListener("popstate", restoreViewFromLocation);
 
   searchInput?.addEventListener("input", () => {
     const query = searchInput.value.trim().toLocaleLowerCase("fr");
@@ -37,5 +89,5 @@ export function initializeNavigation() {
     if (emptyMessage) emptyMessage.hidden = !query || matchCount > 0 || !document.querySelector("#home-view").hidden;
   });
 
-  if (footerNote) footerNote.hidden = true;
+  restoreViewFromLocation();
 }
