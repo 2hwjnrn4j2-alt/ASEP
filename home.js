@@ -1,3 +1,7 @@
+// ==========================================================
+// NAVIGATION DE L’APPLICATION
+// ==========================================================
+
 const homeView = document.querySelector("#home-view");
 const calculatorView = document.querySelector("#calculator-view");
 const searchInput = document.querySelector("#feature-search");
@@ -5,14 +9,19 @@ const homeFeatureButton = document.querySelector("#open-grading");
 const emptyMessage = document.querySelector("#search-empty");
 const calculatorFooterNote = document.querySelector("footer span:nth-child(2)");
 
-// Garder uniquement le placeholder dans la barre de recherche.
+// ==========================================================
+// CONFIGURATION DE LA BARRE DE RECHERCHE
+// ==========================================================
+
 document.querySelector('.global-navigation label[for="feature-search"]')?.remove();
 searchInput.placeholder = "Rechercher";
 
-// Le bouton Barème est déjà présent dans le menu d’accueil : supprimer le doublon à côté de la recherche.
 document.querySelector("#open-grading-nav")?.remove();
 
-// La page Nouveautés utilise une palette sobre noir et blanc ; le bouton de retour reste rose partout.
+// ==========================================================
+// STYLE DE LA PAGE NOUVEAUTÉS
+// ==========================================================
+
 const pageStyle = document.createElement("style");
 pageStyle.textContent = `
   .back-home { border-color: #b94f73; background: #b94f73; color: #fff; }
@@ -26,7 +35,10 @@ pageStyle.textContent = `
 `;
 document.head.append(pageStyle);
 
-// Créer la vue Nouveautés sans remplacer la structure du barème.
+// ==========================================================
+// CRÉATION DE LA PAGE NOUVEAUTÉS
+// ==========================================================
+
 const newsView = document.createElement("div");
 newsView.id = "news-view";
 newsView.hidden = true;
@@ -57,7 +69,10 @@ newsView.innerHTML = `
   </div>`;
 document.querySelector("main").append(newsView);
 
-// Ajouter l’entrée Nouveautés au menu et la maintenir en dernière position.
+// ==========================================================
+// CARTE D’ACCÈS À LA PAGE NOUVEAUTÉS
+// ==========================================================
+
 const newsFeatureButton = document.createElement("button");
 newsFeatureButton.id = "open-news";
 newsFeatureButton.className = "feature-link news-home-link";
@@ -65,6 +80,10 @@ newsFeatureButton.type = "button";
 newsFeatureButton.dataset.search = "nouveautés nouveautés actualités mises à jour versions changelog blog";
 newsFeatureButton.innerHTML = '<span class="feature-icon" aria-hidden="true">✦</span><span><strong>Nouveautés</strong><small>Découvrir les dernières mises à jour du site</small></span><span class="feature-arrow" aria-hidden="true">→</span>';
 document.querySelector(".feature-navigation").append(newsFeatureButton);
+
+// ==========================================================
+// GESTION DU NOTE DE PIED DE PAGE
+// ==========================================================
 
 function showCalculatorFooterNote() {
   if (calculatorFooterNote) calculatorFooterNote.hidden = false;
@@ -75,6 +94,10 @@ function hideCalculatorFooterNote() {
 }
 
 hideCalculatorFooterNote();
+
+// ==========================================================
+// OUVERTURE DES DIFFÉRENTES VUES
+// ==========================================================
 
 function openCalculator() {
   homeView.hidden = true;
@@ -106,6 +129,10 @@ function returnHome() {
   searchInput.focus({ preventScroll: true });
 }
 
+// ==========================================================
+// ÉVÉNEMENTS DE NAVIGATION
+// ==========================================================
+
 homeFeatureButton.addEventListener("click", openCalculator);
 newsFeatureButton.addEventListener("click", openNews);
 document.querySelector("#back-home").addEventListener("click", returnHome);
@@ -117,6 +144,10 @@ document.querySelector("#brand-home").addEventListener("click", (event) => {
   }
 });
 
+// ==========================================================
+// RECHERCHE DES FONCTIONNALITÉS
+// ==========================================================
+
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLocaleLowerCase("fr");
   const gradingMatches = !query || homeFeatureButton.dataset.search.toLocaleLowerCase("fr").includes(query);
@@ -127,6 +158,9 @@ searchInput.addEventListener("input", () => {
   emptyMessage.hidden = visibleMatch || !query || (!calculatorView.hidden && !newsView.hidden);
 });
 
-// Mettre à jour l’affichage global du numéro de version.
+// ==========================================================
+// VERSION AFFICHÉE
+// ==========================================================
+
 const footerVersion = document.querySelector("footer span");
 if (footerVersion) footerVersion.textContent = "ASEP v0.4.0";

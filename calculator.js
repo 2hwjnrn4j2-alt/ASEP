@@ -1,13 +1,10 @@
+// ==========================================================
+// VALIDATION DES PARAMÈTRES
+// ==========================================================
+
 export function validateParameters(parameters) {
   const errors = [];
-  const {
-    totalPoints,
-    minGrade,
-    maxGrade,
-    passingGrade,
-    passingPercent,
-    pointStep,
-  } = parameters;
+  const { totalPoints, minGrade, maxGrade, passingGrade, passingPercent, pointStep } = parameters;
 
   for (const [label, value] of [
     ["Le total de points", totalPoints],
@@ -34,9 +31,17 @@ export function validateParameters(parameters) {
   return errors;
 }
 
+// ==========================================================
+// SEUIL DE RÉUSSITE
+// ==========================================================
+
 export function resolvePassingPercent({ minGrade, maxGrade, passingGrade, passingPercent }) {
   return passingPercent ?? ((passingGrade - minGrade) / (maxGrade - minGrade)) * 100;
 }
+
+// ==========================================================
+// CALCUL D’UNE NOTE
+// ==========================================================
 
 export function calculateGrade({
   score,
@@ -47,7 +52,7 @@ export function calculateGrade({
   passingPercent,
   rounding = 0.5,
 }) {
-  const parameters = { totalPoints, minGrade, maxGrade, passingGrade, passingPercent};
+  const parameters = { totalPoints, minGrade, maxGrade, passingGrade, passingPercent };
   const errors = validateParameters(parameters);
   if (errors.length) throw new RangeError(errors.join(" "));
   if (!Number.isFinite(score)) throw new RangeError("Le nombre de points obtenus doit être valide.");
@@ -55,7 +60,7 @@ export function calculateGrade({
     throw new RangeError("La règle d’arrondi sélectionnée n’est pas valide.");
   }
 
-const effectiveScore = Math.min(totalPoints, Math.max(0, score));
+  const effectiveScore = Math.min(totalPoints, Math.max(0, score));
   const percentage = (effectiveScore / totalPoints) * 100;
   const threshold = resolvePassingPercent({ minGrade, maxGrade, passingGrade, passingPercent });
   const rawGrade = percentage <= threshold
@@ -68,6 +73,10 @@ const effectiveScore = Math.min(totalPoints, Math.max(0, score));
   return Math.min(maxGrade, Math.max(minGrade, roundedGrade));
 }
 
+// ==========================================================
+// INTERVALLE AUTOMATIQUE
+// ==========================================================
+
 function automaticStep(totalPoints) {
   const roughStep = totalPoints / 40;
   const magnitude = 10 ** Math.floor(Math.log10(roughStep));
@@ -75,6 +84,10 @@ function automaticStep(totalPoints) {
   const niceStep = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
   return niceStep * magnitude;
 }
+
+// ==========================================================
+// GÉNÉRATION DU TABLEAU
+// ==========================================================
 
 export function generateTable(parameters) {
   const errors = validateParameters(parameters);
@@ -84,10 +97,7 @@ export function generateTable(parameters) {
   const rows = [];
   for (let index = 0; ; index += 1) {
     const score = Math.min(index * step, parameters.totalPoints);
-    rows.push({
-      score,
-      grade: calculateGrade({ ...parameters, score }),
-    });
+    rows.push({ score, grade: calculateGrade({ ...parameters, score }) });
     if (score >= parameters.totalPoints) break;
     if (rows.length >= 500) {
       throw new RangeError("Ce pas produit plus de 500 lignes. Augmentez le pas de points.");
@@ -101,6 +111,10 @@ export function generateTable(parameters) {
   }
   return { rows, step };
 }
+
+// ==========================================================
+// FORMATAGE DES NOMBRES
+// ==========================================================
 
 export function formatNumber(value, maximumFractionDigits = 2) {
   return new Intl.NumberFormat("fr-CH", { maximumFractionDigits }).format(value);
