@@ -18,6 +18,7 @@ export function initializeNavigation() {
 
     for (const view of views) view.hidden = view.id !== viewId;
     document.body.classList.toggle("calculator-active", viewId === "calculator-view");
+    document.body.classList.toggle("news-active", viewId === "news-view");
     if (footerNote) footerNote.hidden = viewId !== "calculator-view";
 
     if (updateHistory) {
@@ -42,9 +43,7 @@ export function initializeNavigation() {
 
   document.querySelector("#brand-home")?.addEventListener("click", (event) => {
     event.preventDefault();
-    showView("home-view", {
-      moveFocus: true,
-    });
+    showView("home-view", { moveFocus: true });
   });
 
   window.addEventListener("popstate", restoreViewFromLocation);
