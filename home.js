@@ -47,7 +47,7 @@ newsView.innerHTML = `
     <button id="back-home-news" class="back-home" type="button"><span aria-hidden="true">←</span> Retour à l’accueil</button>
     <section class="intro news-heading" aria-labelledby="news-title">
       <div>
-        <p class="eyebrow">ACTUALITÉS ASEP</p>
+        <p class="eyebrow">ACTUALITÉS</p>
         <h1 id="news-title">Nouveautés</h1>
         <p>Les améliorations, nouvelles fonctionnalités et corrections apportées à chaque mise à jour.</p>
       </div>
