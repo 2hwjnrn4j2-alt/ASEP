@@ -1,0 +1,34 @@
+/* Adaptations pour les écrans étroits et les appareils mobiles. */
+@media (max-width: 760px) {
+  .site-header { height: 62px; grid-template-columns: auto minmax(0, 1fr); gap: 12px; padding: 0 22px; }
+  .global-navigation { grid-column: 2; }
+  .header-note { display: none; }
+  main { width: min(100% - 32px, 560px); }
+  .intro { padding: 40px 0 25px; }
+  .settings-card { padding: 23px 20px 18px; }
+  .results { padding: 20px 15px 14px; }
+  .result-actions { gap: 8px; }
+  .row-count { display: none; }
+  footer { width: calc(100% - 32px); gap: 12px; font-size: 9px; }
+  .evaluation-details { margin-bottom: 22px; padding-bottom: 19px; }
+  .evaluation-details input[type="date"] { width: 100%; min-width: 0; max-width: 100%; appearance: none; -webkit-appearance: none; }
+  .news-heading { align-items: start; }
+}
+@media (max-width: 480px) {
+  .site-header { padding: 0 12px; gap: 8px; }
+  .brand { gap: 7px; font-size: 12px; }
+  .brand-mark { width: 28px; height: 28px; }
+  .search-wrap { height: 36px; gap: 5px; padding: 0 7px; }
+  .search-wrap input { font-size: 10px; }
+  .home-banner { margin-top: 20px; }
+  .feature-link { min-height: 74px; }
+  .evaluation-details .field:not(.field-wide) { grid-column: 1 / -1; }
+  .news-card { padding: 19px; }
+  .news-card-header { align-items: start; }
+}
+@media (max-width: 390px) {
+  .field-grid { gap: 14px 10px; }
+  .field { font-size: 11px; }
+  .form-actions { gap: 6px; }
+  .button-primary { padding: 0 11px; }
+}

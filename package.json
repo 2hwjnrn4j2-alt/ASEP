@@ -1,6 +1,6 @@
 {
-  "name": "generateur-baremes",
-  "version": "1.0.0",
+  "name": "asep",
+  "version": "0.4.1",
   "private": true,
   "type": "module",
   "scripts": {
