@@ -9,6 +9,23 @@ const calculatorFooterNote = document.querySelector("footer span:nth-child(2)");
 document.querySelector('.global-navigation label[for="feature-search"]')?.remove();
 searchInput.placeholder = "Rechercher";
 
+// Le bouton Barème est déjà présent dans le menu d’accueil : supprimer le doublon à côté de la recherche.
+document.querySelector("#open-grading-nav")?.remove();
+
+// La page Nouveautés utilise une palette sobre noir et blanc ; le bouton de retour reste rose partout.
+const pageStyle = document.createElement("style");
+pageStyle.textContent = `
+  .back-home { border-color: #b94f73; background: #b94f73; color: #fff; }
+  .back-home:hover { border-color: #963b5d; background: #963b5d; }
+  #news-view { color: #111; }
+  #news-view .eyebrow, #news-view .news-heading p,
+  #news-view .news-card p, #news-view .news-card ul { color: #333; }
+  #news-view .news-card { border-color: #222; background: #fff; box-shadow: none; }
+  #news-view .news-version { background: #111; color: #fff; }
+  #news-view .news-date { color: #555; }
+`;
+document.head.append(pageStyle);
+
 // Créer la vue Nouveautés sans remplacer la structure du barème.
 const newsView = document.createElement("div");
 newsView.id = "news-view";
@@ -40,14 +57,14 @@ newsView.innerHTML = `
   </div>`;
 document.querySelector("main").append(newsView);
 
-// Ajouter l’entrée Nouveautés à la navigation d’accueil.
+// Ajouter l’entrée Nouveautés au menu et la maintenir en dernière position.
 const newsFeatureButton = document.createElement("button");
 newsFeatureButton.id = "open-news";
 newsFeatureButton.className = "feature-link news-home-link";
 newsFeatureButton.type = "button";
 newsFeatureButton.dataset.search = "nouveautés nouveautés actualités mises à jour versions changelog blog";
 newsFeatureButton.innerHTML = '<span class="feature-icon" aria-hidden="true">✦</span><span><strong>Nouveautés</strong><small>Découvrir les dernières mises à jour du site</small></span><span class="feature-arrow" aria-hidden="true">→</span>';
-document.querySelector(".feature-navigation").prepend(newsFeatureButton);
+document.querySelector(".feature-navigation").append(newsFeatureButton);
 
 function showCalculatorFooterNote() {
   if (calculatorFooterNote) calculatorFooterNote.hidden = false;
