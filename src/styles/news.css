@@ -1,9 +1,10 @@
 /* Styles propres à la page Nouveautés : palette blanche, grise et noire. */
 body.news-active { --canvas: #fff; --ink: #222; --muted: #666; --line: #ddd; background: #fff; }
-body.news-active .site-header { background: #fff; }
-body.news-active .brand-mark { background: #222; }
-body.news-active .search-wrap { border-color: #ccc; color: #333; }
-body.news-active .search-wrap:focus-within { border-color: #555; box-shadow: 0 0 0 3px rgba(0, 0, 0, .1); }
+/* L’en-tête partagé garde toujours son identité rose, y compris sur Nouveautés. */
+body.news-active .site-header { background: rgba(255, 245, 247, .96); }
+body.news-active .brand-mark { background: #b94f73; }
+body.news-active .search-wrap { border-color: #e8cbd6; color: #a94367; }
+body.news-active .search-wrap:focus-within { border-color: #c56b89; box-shadow: 0 0 0 3px rgba(185, 79, 115, .12); }
 body.news-active .search-wrap input { color: #222; }
 body.news-active .news-view { width: 100%; max-width: 900px; margin: 20px auto 50px; color: #222; }
 body.news-active .news-heading { padding-top: 35px; text-align: left; }
