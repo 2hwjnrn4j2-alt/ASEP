@@ -57,10 +57,10 @@ newsView.innerHTML = `
         <div class="news-card-header"><span class="news-version">Version 0.4.0</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></div>
         <h2>Nouveau journal des mises à jour</h2>
         <p>ASEP accueille un onglet « Nouveautés » permettant de retrouver facilement les changements apportés au site.</p>
-        <ul><li>Accès depuis la page d’accueil.</li><li>Présentation des versions sous forme de blog.</li><li>Historique des nouveautés et améliorations.</li></ul>
+        <ul><li>Accès depuis la page d’accueil.</li><li>Présentation des versions.</li><li>Historique des nouveautés et améliorations.</li></ul>
       </article>
       <article class="news-card">
-        <div class="news-card-header"><span class="news-version">Version 0.3.0</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></div>
+        <div class="news-card-header"><span class="news-version">Version 0.3.0</span><time class="news-date" datetime="2026-11-23">23 novembre 2026</time></div>
         <h2>Barèmes personnalisés et prêts à imprimer</h2>
         <p>Le générateur de barème prend désormais en charge davantage d’informations.</p>
         <ul><li>Ajout du titre, de la date et du nom de la classe.</li><li>Titre personnalisé lors de l’impression ou de l’export PDF.</li><li>Affichage plus adapté sur les appareils mobiles.</li></ul>
