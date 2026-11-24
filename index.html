@@ -7,14 +7,14 @@
     <meta name="theme-color" content="#fff5f7">
     <meta name="description" content="ASEP, des outils simples pour les enseignantes et enseignants.">
     <title>ASEP — Espace enseignant</title>
-    <link rel="stylesheet" href="/src/styles/main.css">
-    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <script type="module" src="./src/main.js"></script>
   </head>
 
   <body>
     <!-- En-tête commun et recherche des fonctionnalités -->
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Accueil ASEP" id="brand-home">
+      <a class="brand" href="./" aria-label="Accueil ASEP" id="brand-home">
         <span class="brand-mark" aria-hidden="true">A</span>
         <span>ASEP</span>
       </a>
@@ -85,9 +85,9 @@
           <details class="advanced-settings">
             <summary><span class="settings-icon" aria-hidden="true">+</span>Paramètres avancés</summary>
             <div class="advanced-grid field-grid">
-              <label class="field" for="passing-percent"><span>Seuil de réussite <span class="optional">optionnel</span></span><span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto"><span>%</span></span><small class="field-help">Laissez vide pour déduire le seuil des notes de réussite.</small></label>
-              <label class="field" for="rounding"><span>Arrondir la note</span><select id="rounding" name="rounding"><option value="1">À l’entier le plus proche</option><option value="0.5" selected>Au 0,5 le plus proche</option><option value="0.25">Au 0,25 le plus proche</option><option value="0.1">Au 0,1 le plus proche</option><option value="none">Sans arrondi</option></select></label>
-              <label class="field field-wide" for="point-step"><span>Intervalle des points</span><select id="point-step" name="pointStep"><option value="">Automatique</option><option value="0.25">0,25 point</option><option value="0.5">0,5 point</option><option value="1">1 point</option><option value="2">2 points</option></select></label>
+              <label class="field" for="passing-percent"><span>Seuil de réussite <span class="optional">optionnel</span></span><span class="input-wrap"><input id="passing-percent" name="passingPercent" type="number" min="0.01" max="99.99" step="any" placeholder="Auto"><span>%</span></span></label>
+              <label class="field" for="rounding"><span>Arrondir la note</span><select id="rounding" name="rounding"><option value="1">À l’entier le plus proche</option><option value="0.5" selected>Au demi-point le plus proche</option><option value="0.25">Au quart de point le plus proche</option><option value="0.1">Au dixième le plus proche</option><option value="none">Sans arrondi</option></select></label>
+              <label class="field field-wide" for="point-step"><span>Intervalle des points</span><select id="point-step" name="pointStep"><option value="0.25">0,25 point</option><option value="0.5">0,5 point</option><option value="1" selected>1 point</option><option value="">Automatique</option></select></label>
             </div>
           </details>
           <div id="error-message" class="error-message" role="alert" hidden></div>
@@ -124,7 +124,7 @@
           <button class="back-home" type="button" data-view="home-view"><span aria-hidden="true">←</span> Retour à l’accueil</button>
           <header class="intro news-heading"><div><p class="eyebrow">JOURNAL DU PRODUIT</p><h1 id="news-title" tabindex="-1">Nouveautés</h1><p class="intro-copy">Les améliorations, nouvelles fonctionnalités et corrections apportées au site.</p></div></header>
           <div class="news-list">
-            <article class="news-card"><header class="news-card-header"><span class="news-version">Version 0.4.1</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></header><h2>Améliorations mineures</h2><p></article>
+            <article class="news-card"><header class="news-card-header"><span class="news-version">Version 0.4.1</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></header><h2>Améliorations mineures</h2><p></p></article>
             <article class="news-card"><header class="news-card-header"><span class="news-version">Version 0.4.0</span><time class="news-date" datetime="2026-11-24">24 novembre 2026</time></header><h2>Nouvel onglet « Nouveautés »</h2><p>ASEP accueille un onglet « Nouveautés » permettant de retrouver facilement les changements apportés au site.</p><ul><li>Accès depuis la page d’accueil.</li><li>Présentation des versions.</li><li>Historique des améliorations.</li></ul></article>
             <article class="news-card"><header class="news-card-header"><span class="news-version">Version 0.3.0</span><time class="news-date" datetime="2026-11-23">23 novembre 2026</time></header><h2>Barèmes personnalisés et prêts à imprimer</h2><p>Le générateur de barème prend désormais en charge davantage d’informations.</p><ul><li>Ajout du titre, de la date et du nom de la classe.</li><li>Titre personnalisé lors de l’impression ou de l’export PDF.</li><li>Affichage adapté aux appareils mobiles.</li></ul></article>
           </div>
